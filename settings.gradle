@@ -2,4 +2,5 @@ rootProject.name = 'carRental'
 include '1-service-discovery'
 include 'user-service'
 include 'car-service'
+include 'open-feign'
 
