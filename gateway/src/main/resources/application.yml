@@ -1,0 +1,25 @@
+server:
+  port: 8089
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: USER
+          uri: lb://USER
+          predicates:
+            - Path=/v1/user/**
+        - id: CAR
+          uri: lb://CAR
+          predicates:
+            - Path=/v1/car/**
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka
+
+

@@ -17,4 +17,8 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleUserNotFound(UserNotFoundException e){
         return new ResponseEntity<>("User not found!",HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(NotEnoughMoneyOnBalance.class)
+    public ResponseEntity<Object> handleBalanceException(NotEnoughMoneyOnBalance e){
+        return new ResponseEntity<>("You don't have enough much mone on your balance!",HttpStatus.BAD_REQUEST);
+    }
 }
