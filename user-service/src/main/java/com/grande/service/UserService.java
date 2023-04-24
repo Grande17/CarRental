@@ -60,16 +60,16 @@ public class UserService {
         if (byId.isEmpty()){
             throw new UserNotFoundException();
         }
-        switch (typeOfUser.toUpperCase()){
-            case "STANDARD":
+        switch (typeOfUser.toUpperCase()) {
+            case "STANDARD" -> {
                 byId.get().setTypeOfUser(TypeOfUser.STANDARD);
                 repository.save(byId.get());
-                break;
-            case "PREMIUM":
+            }
+            case "PREMIUM" -> {
                 byId.get().setTypeOfUser(TypeOfUser.PREMIUM);
                 byId.get().setBalance(byId.get().getBalance().subtract(BigDecimal.valueOf(99.99)));
                 repository.save(byId.get());
-                break;
+            }
         }
 
     }

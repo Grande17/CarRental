@@ -21,5 +21,9 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleCarNotFoundException(CarNotFoundException e){
         return new ResponseEntity<>("Car with given id doesn't exists in database !", HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(WrongStatusException.class)
+    public ResponseEntity<Object> handleWrongStatus(WrongStatusException e){
+        return new ResponseEntity<>("Given status is wrong, please try: AVAILABLE, NOT_AVAILABLE, DAMAGED",HttpStatus.NOT_FOUND);
+    }
 
 }

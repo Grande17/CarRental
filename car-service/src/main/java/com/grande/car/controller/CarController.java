@@ -1,10 +1,12 @@
 package com.grande.car.controller;
 
 import com.grande.car.exceptions.CarNotFoundException;
+import com.grande.car.exceptions.WrongStatusException;
 import com.grande.car.service.CarService;
 import com.grande.car.exceptions.PlatesAlreadyUsedException;
 import com.grande.car.exceptions.PlatesNotFoundException;
 import com.grande.car.domain.CarDto;
+import jakarta.ws.rs.Path;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -42,5 +44,9 @@ public class CarController {
     @PutMapping
     public void updateCar(@RequestBody CarDto carDto) throws CarNotFoundException {
         carService.updateCar(carDto);
+    }
+    @PutMapping("/status/{id}/{status}")
+    public void changeStatus(@PathVariable Long id,@PathVariable String status) throws CarNotFoundException, WrongStatusException {
+        carService.changeStatus(id, status);
     }
 }

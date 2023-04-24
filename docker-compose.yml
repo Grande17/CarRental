@@ -52,6 +52,14 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
+  user-service:
+    image: user-service:0.0.1
+    ports:
+      - 8080:8080
+    networks:
+      - postgres
+
+
 networks:
   postgres:
     driver: bridge

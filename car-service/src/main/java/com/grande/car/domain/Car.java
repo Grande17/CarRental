@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String brand;
     private String model;
@@ -23,5 +23,16 @@ public class Car {
     private Classification classification;
     private Integer km;
     private String plates;
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
 
+    public Car(String brand, String model, Integer yearOfProduction, Classification classification, Integer km, String plates, Status status) {
+        this.brand = brand;
+        this.model = model;
+        this.yearOfProduction = yearOfProduction;
+        this.classification = classification;
+        this.km = km;
+        this.plates = plates;
+        this.status = status;
+    }
 }
