@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: 8090
 spring:
   application:
-    name: USER
+    name: ORDER
   datasource:
     password: sa
-    url: jdbc:postgresql://localhost:5432/user
+    url: jdbc:postgresql://localhost:5432/order
     username: sa
   jpa:
     hibernate:
@@ -18,4 +18,4 @@ spring:
   eureka:
     client:
       service-url:
-        defaultZone: http://service-discovery:8761/eureka
+        defaultZone: http://localhost:8761/eureka

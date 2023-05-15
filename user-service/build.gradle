@@ -1,6 +1,8 @@
 plugins {
     id 'java'
 }
+
+
 jar {
     manifest {
         attributes(
@@ -22,6 +24,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.5'
     implementation 'org.postgresql:postgresql:42.6.0'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.0.0'
+    implementation 'org.springframework.boot:spring-boot-maven-plugin:3.0.6'
+
 
 
 

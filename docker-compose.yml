@@ -53,12 +53,27 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   user-service:
-    image: user-service:0.0.1
+    image: user-service:0.0.4
     ports:
       - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/user
+   #   - EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE=http://service-discovery:8761/eureka
     networks:
       - postgres
+    depends_on:
+      - 1-service-discovery
+    restart: on-failure
+    links:
+      - 1-service-discovery
 
+  1-service-discovery:
+    container_name: service-discovery
+    image: service-discovery:0.0.1
+    ports:
+      - 8761:8761
+    networks:
+      - postgres
 
 networks:
   postgres:
